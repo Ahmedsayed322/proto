@@ -1,0 +1,125 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Space+Grotesk:wght@500;600;700&family=Syne:wght@700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    background-color: #0A0A0C;
+    color: #EDEDED;
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    scroll-behavior: smooth;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    background-color: #DC2626;
+    color: #FFFFFF;
+  }
+
+  :focus-visible {
+    outline: 2px solid #EF4444;
+    outline-offset: 3px;
+  }
+}
+
+/* Organic Tactile Film Grain (Human-crafted analog texture, eliminates digital banding) */
+.bg-grain-texture {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.038'/%3E%3C/svg%3E");
+}
+
+/* Atmospheric Editorial Depth (Grounded charcoal-black to deep obsidian) */
+.bg-editorial-dark {
+  background: linear-gradient(180deg, #0C0D11 0%, #09090C 50%, #070709 100%);
+}
+
+/* Subtle Architectural Header Border */
+.border-hairline {
+  border-color: rgba(255, 255, 255, 0.07);
+}
+
+/* Restrained Card Surface with Natural Depth */
+.surface-card {
+  background: #111216;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.5);
+}
+
+.surface-card:hover {
+  border-color: rgba(220, 38, 38, 0.4);
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.8), 0 0 20px -5px rgba(220, 38, 38, 0.15);
+}
+
+/* Minimal sleek scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0A0A0C;
+}
+::-webkit-scrollbar-thumb {
+  background: #26272F;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #DC2626;
+}
+
+/* Inter-Section Animated Laser Seam */
+.section-laser-line {
+  position: relative;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.08) 20%, rgba(255, 255, 255, 0.08) 80%, transparent 100%);
+  overflow: hidden;
+}
+
+.section-laser-line::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 25%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(220, 38, 38, 0.9), #EF4444, rgba(220, 38, 38, 0.9), transparent);
+  box-shadow: 0 0 12px 2px rgba(220, 38, 38, 0.6);
+  animation: beamHorizontal 4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+/* Vertical Conduit Laser */
+.conduit-laser-v {
+  position: relative;
+  width: 1px;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+}
+
+.conduit-laser-v::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 35%;
+  background: linear-gradient(180deg, transparent, rgba(220, 38, 38, 0.9), #EF4444, transparent);
+  box-shadow: 0 0 10px 1px rgba(220, 38, 38, 0.6);
+  animation: beamVertical 3s ease-in-out infinite;
+}
+
+/* Reveal on Scroll Transitions */
+.reveal-init {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
